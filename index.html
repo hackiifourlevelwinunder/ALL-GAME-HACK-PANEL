@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ALL COLORS TREDING HACK</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070b12;
+  --panel:#0e1420;
+  --ink:#e9eef7;
+  --muted:#9fb0c7;
+  --cyan:#22e3ff;
+  --purple:#7c6bff;
+  --green:#2cff8f;
+  --red:#ff5c7a;
+  --amber:#ffd166;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:radial-gradient(1200px 600px at 70% -10%,#16203a 0%,transparent 40%),var(--bg);
+  color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  overflow:hidden;
+}
+
+/* ---------- GLOBAL LAYERS ---------- */
+#grid{
+  position:fixed;inset:0;pointer-events:none;opacity:.25;
+  background:
+   linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+   linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:40px 40px;
+  mask-image: radial-gradient(circle at 50% 10%, #000 0%, transparent 70%);
+}
+#particles{position:fixed;inset:0;pointer-events:none}
+
+/* ---------- UTIL ---------- */
+.hidden{display:none}
+.center{display:flex;align-items:center;justify-content:center}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:16px;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+.row{display:flex;gap:12px}
+.col{display:flex;flex-direction:column;gap:12px}
+.btn{
+  padding:12px 16px;border-radius:12px;border:0;cursor:pointer;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  color:#05070b;font-weight:700;
+}
+.badge{padding:6px 10px;border-radius:999px;background:#0b1220;border:1px solid rgba(255,255,255,.1);font-size:12px;color:var(--muted)}
+
+/* ---------- BOOT ---------- */
+#boot{
+  position:fixed;inset:0;background:#000;z-index:50;
+  font-family:"JetBrains Mono",monospace;color:#b6ffd6;
+}
+#boot pre{padding:24px;font-size:13px;line-height:1.5}
+
+/* ---------- APP ---------- */
+#app{position:relative;height:100%;padding:12px}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-radius:14px;background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.08)
+}
+header h1{font-size:16px;margin:0;letter-spacing:.5px}
+header .right{display:flex;gap:10px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+
+/* ---------- DASH ---------- */
+#dash{margin-top:10px;display:grid;grid-template-columns:1.2fr .8fr;gap:10px}
+#stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat h3{margin:0;font-size:12px;color:var(--muted)}
+.stat b{font-size:20px}
+.progress{height:8px;border-radius:999px;background:#0b1220;border:1px solid rgba(255,255,255,.1);overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--cyan));width:50%}
+
+/* ---------- ACTIVITY ---------- */
+#activity{font-size:12px;color:var(--muted);height:120px;overflow:hidden}
+#activity div{margin-bottom:6px}
+
+/* ---------- CONFIG ---------- */
+#config{margin-top:10px}
+select,input{
+  width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
+  background:#0b1220;color:var(--ink);outline:none
+}
+label{font-size:12px;color:var(--muted)}
+
+/* ---------- GATE ---------- */
+#gate .error{color:var(--red);font-weight:700}
+#tg{opacity:0;transform:translateY(8px);transition:.4s}
+#tg.show{opacity:1;transform:none}
+
+/* ---------- ENGINE ---------- */
+#engine{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#timer{
+  width:180px;height:180px;border-radius:50%;
+  background:conic-gradient(var(--cyan) 0deg, #1a2236 0deg);
+  display:grid;place-items:center;margin:auto;border:1px solid rgba(255,255,255,.1)
+}
+#timer span{font-size:22px}
+#num{font-size:72px;font-weight:800;text-align:center}
+.small{color:#6ecbff}
+.big{color:#b197ff}
+
+/* ---------- FOOT ---------- */
+footer{position:absolute;left:12px;right:12px;bottom:12px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  #dash{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div id="grid"></div>
+<canvas id="particles"></canvas>
+
+<!-- BOOT -->
+<div id="boot">
+<pre id="bootlog"></pre>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+<header>
+  <h1>ALL COLORS TREDING HACK</h1>
+  <div class="right">
+    <span class="badge"><span class="dot"></span>&nbsp;Server ONLINE</span>
+    <span class="badge">Latency <b id="lat">82</b> ms</span>
+    <span class="badge">Region ASIA-IN</span>
+  </div>
+</header>
+
+<section id="dash">
+  <div class="card col">
+    <div id="stats">
+      <div class="card stat">
+        <h3>Total Users</h3><b id="uTotal">124,387</b>
+      </div>
+      <div class="card stat">
+        <h3>Active Now</h3><b id="uActive">49,012</b>
+      </div>
+      <div class="card stat">
+        <h3>Today Sessions</h3><b id="uToday">8,914</b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card col" style="flex:1">
+        <h3 style="margin:0;font-size:12px;color:var(--muted)">CPU</h3>
+        <div class="progress"><i id="cpu"></i></div>
+      </div>
+      <div class="card col" style="flex:1">
+        <h3 style="margin:0;font-size:12px;color:var(--muted)">Memory</h3>
+        <div class="progress"><i id="mem"></i></div>
+      </div>
+      <div class="card col" style="flex:1">
+        <h3 style="margin:0;font-size:12px;color:var(--muted)">Network</h3>
+        <div class="progress"><i id="net"></i></div>
+      </div>
+    </div>
+    <div class="card">
+      <div id="activity"></div>
+    </div>
+  </div>
+
+  <div class="card col">
+    <div id="config" class="col">
+      <label>Select Processing Module</label>
+      <select id="game">
+        <option>JALWA GAME</option><option>GOA GAME</option><option>DG CLUB</option>
+        <option>91 CLUB</option><option>DREAM 99</option><option>TASHAN WIN</option>
+        <option>BIG DADDY</option><option>BDG WIN</option><option>55 CLUB</option>
+        <option>DAMAN GAME</option><option>DM WIN</option><option>SIKKIM GAME</option>
+        <option>IN 999 GAME</option><option>6 CLUB GAME</option>
+      </select>
+      <button class="btn" id="init">INITIALIZE</button>
+    </div>
+
+    <div id="gate" class="col hidden">
+      <label>ENTER KEY CODE</label>
+      <input id="key" placeholder="KEY CODE"/>
+      <button class="btn" id="auth">AUTHORIZE</button>
+      <div id="gateMsg"></div>
+      <div id="tg">
+        <a class="btn" href="https://t.me/HACKIISURE?text=Hello%20Admin,%20Key%20verification%20request." target="_blank">VERIFY ON TELEGRAM</a>
+      </div>
+    </div>
+
+    <div id="engine" class="hidden">
+      <div class="card center">
+        <div id="timer"><span id="tLeft">30s</span></div>
+      </div>
+      <div class="card col center">
+        <div id="num">–</div>
+        <div id="cls" class="small">SMALL (0–4)</div>
+        <div class="badge">Preview enabled • 30s early indicator</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Platform v3.8.2 • Stability & Performance</span>
+  <span>256-bit Encrypted • Zero-log UI Demo</span>
+</footer>
+</div>
+
+<script>
+/* ---------- BOOT ---------- */
+const bootLines=[
+"Booting Secure Runtime v4.8",
+"Loading core modules...",
+"Initializing encryption layer...",
+"Integrity check passed",
+"Starting services...",
+"System Ready"
+];
+let i=0;const bootlog=document.getElementById('bootlog');
+const bootInt=setInterval(()=>{
+  bootlog.textContent+=bootLines[i++]+"\n";
+  if(i===bootLines.length){clearInterval(bootInt);
+    setTimeout(()=>{document.getElementById('boot').remove();
+      document.getElementById('app').classList.remove('hidden');},700);
+  }
+},400);
+
+/* ---------- PARTICLES ---------- */
+const c=document.getElementById('particles'),ctx=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight}
+resize();addEventListener('resize',resize);
+const P=[...Array(120)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,v:Math.random()*0.6+0.2}));
+(function loop(){
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle='rgba(34,227,255,.35)';
+  P.forEach(p=>{p.y+=p.v;if(p.y>c.height)p.y=0;
+    ctx.fillRect(p.x,p.y,1.2,1.2)});
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- LIVE STATS ---------- */
+const uT=document.getElementById('uTotal');
+const uA=document.getElementById('uActive');
+const uD=document.getElementById('uToday');
+const cpu=document.getElementById('cpu'),mem=document.getElementById('mem'),net=document.getElementById('net');
+setInterval(()=>{
+  uT.textContent=(+uT.textContent.replace(/,/g,'')+Math.floor(Math.random()*3)).toLocaleString();
+  uA.textContent=(49000+Math.floor(Math.random()*200)).toLocaleString();
+  uD.textContent=(8800+Math.floor(Math.random()*200)).toLocaleString();
+  cpu.style.width=(60+Math.random()*25)+'%';
+  mem.style.width=(55+Math.random()*20)+'%';
+  net.style.width=(65+Math.random()*20)+'%';
+  document.getElementById('lat').textContent=78+Math.floor(Math.random()*12);
+},2000);
+
+/* ---------- ACTIVITY ---------- */
+const act=document.getElementById('activity');
+const msgs=[
+"Establishing secure channel…","Handshake complete",
+"Monitoring active sessions","Load balancer synced",
+"Peak traffic detected – stable","Cycle completed"
+];
+setInterval(()=>{
+  const d=document.createElement('div');
+  d.textContent=`[${new Date().toLocaleTimeString()}] ${msgs[Math.floor(Math.random()*msgs.length)]}`;
+  act.prepend(d); if(act.children.length>8) act.removeChild(act.lastChild);
+},1500);
+
+/* ---------- FLOW ---------- */
+document.getElementById('init').onclick=()=>{
+  document.getElementById('gate').classList.remove('hidden');
+};
+document.getElementById('auth').onclick=()=>{
+  const k=document.getElementById('key').value.trim();
+  const msg=document.getElementById('gateMsg'); msg.innerHTML="";
+  if(k==="HACKIIBYPASS"){
+    msg.innerHTML='<span style="color:var(--green)">Authorization successful</span>';
+    setTimeout(()=>startEngine(),800);
+  }else{
+    msg.innerHTML='<div class="error">ID NOT VERIFIED<br/>INVALID KEY CODE</div>';
+    speak("ID verify karwane ke liye Telegram par message kare");
+    setTimeout(()=>document.getElementById('tg').classList.add('show'),700);
+  }
+};
+
+function speak(t){
+  try{speechSynthesis.speak(new SpeechSynthesisUtterance(t));}catch(e){}
+}
+
+/* ---------- ENGINE ---------- */
+let sec=30;
+function startEngine(){
+  document.getElementById('engine').classList.remove('hidden');
+  setInterval(()=>{
+    sec--; if(sec<0){sec=60;gen();}
+    document.getElementById('tLeft').textContent=sec+"s";
+    document.getElementById('timer').style.background=
+      `conic-gradient(var(--cyan) ${sec*6}deg, #1a2236 0deg)`;
+  },1000);
+  gen();
+}
+function gen(){
+  const n=Math.floor(Math.random()*10);
+  const num=document.getElementById('num'); num.textContent=n;
+  const cls=document.getElementById('cls');
+  if(n<=4){cls.textContent="SMALL (0–4)";cls.className="small"}
+  else{cls.textContent="BIG (5–9)";cls.className="big"}
+}
+</script>
+</body>
+</html>
